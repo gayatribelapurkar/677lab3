@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Cache{
+    rpc InvalidateCache(InvalidateRequest) returns (InvalidateReply) {}
+}
+
+message InvalidateRequest{
+    string toylist=1;
+}
+
+message InvalidateReply{
+    int32 status=1;
+}

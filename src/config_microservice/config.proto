@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+
+service Config{
+    rpc AddToConf (addToConfRequest) returns (addToConfReply) {}
+    rpc RemoveOrderHost (removeOrderHostRequest) returns (removeOrderHostReply) {}
+    rpc GetConfigDetails (getConfigRequest) returns (getConfigDetailsReply) {}
+}
+
+message addToConfRequest{
+    string keyName=1;
+    string value=2;
+    string order_host_id=3;
+}
+
+message addToConfReply{
+    int32 status=1;
+    string leaderid=2;
+    string leaderip=3;
+}
+
+message removeOrderHostRequest{
+    string value=1;
+}
+
+message removeOrderHostReply{
+    int32 status=1;
+}
+
+message getConfigDetailsReply{
+    string configdetails=1;
+}
+
+message getConfigRequest{
+    string dummy=1;
+}

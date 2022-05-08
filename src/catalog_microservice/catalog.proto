@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+
+service Catalog{
+	rpc Query(QueryRequest) returns (QueryReply) {}
+	rpc Update(UpdateRequest) returns (UpdateReply) {}
+	rpc LeaderNotification(LeaderNotificationRequest) returns (LeaderNotificationReply) {}
+}
+
+message QueryRequest{
+	string toy=1;
+}
+message UpdateRequest{
+	string toy=1;
+	int32 num=2;
+}
+
+message QueryReply{
+
+	float price=1;
+	int32 quantity=2;
+}
+
+message UpdateReply{
+	int32 status=1;
+}
+
+message LeaderNotificationRequest{
+	string leaderadderss=1;
+}
+
+message LeaderNotificationReply{
+	int32 status=1;
+}

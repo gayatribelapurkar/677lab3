@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+service Order{
+	rpc IsAlive(IsAliveRequest) returns (IsAliveReply) {}
+	rpc Buy(BuyRequest) returns (BuyReply) {}
+	rpc GetOrderDetails(GetOrderDetailsRequest) returns (GetOrderDetailsReply) {}
+	rpc GetUpdatedOrderLog(UpdatedOrderLogRequest) returns (UpdatedOrderLogReply) {}
+	rpc RestockOrderData(RestockRequest) returns (RestockReply) {}
+	rpc UpdateReplica(UpdateReplicaRequest) returns (UpdateReplicaReply) {}
+	rpc GetMissedOrders(MissedOrdersRequest) returns (MissedOrdersReply) {}
+	rpc GiveLeaderInfo(GiveLeaderInfoRequest) returns (GLReply) {}
+	rpc GiveFollowersNodesInfo (FollowersNodesInfoRequest) returns (GFNReply) {} 
+}
+
+
+message IsAliveRequest{
+	string alivereq=1;
+}
+
+message IsAliveReply{
+	bool alive=1;
+}
+
+message BuyRequest{
+	string toy=1;
+	int32 num=2;
+}
+
+message BuyReply{
+	int32 status=1;
+	int32 ordernum=2;
+	string name=3;
+	int32 quantity=4;
+}
+
+message GetOrderDetailsRequest{
+	int32 ordernum=1;
+}
+
+message GetOrderDetailsReply{
+	int32 ordernum=1;
+	string name=2;
+	int32 quantity=3;
+}
+
+message UpdatedOrderLogRequest{
+	int32 ordernum=1;
+}
+
+message UpdatedOrderLogReply{
+	int32 dummy=1;
+}
+
+message RestockRequest{
+	string stocklist =1;
+}
+
+message RestockReply{
+	int32 status=1;
+}
+
+message UpdateReplicaRequest{
+	string stocklist =1;
+	int32 ordernum=2;
+	string name=3;
+	int32 quantity=4;
+	bool restock=5;
+}
+
+message UpdateReplicaReply{
+	int32 status=1;
+}
+
+message MissedOrdersRequest{
+	int32 ordernum=1;
+}
+
+message MissedOrdersReply{
+	string missedorders=1;
+	bool isUpdated=2;
+}
+
+message GiveLeaderInfoRequest{
+	string leaderid=1;
+	string leaderip=2;
+}
+
+message FollowersNodesInfoRequest{
+	string nodes=1;
+}
+
+message AddFollowerNodeRequest{
+	string node=1;
+}
+
+message GLReply{
+	int32 status=1;
+
+}
+
+message GFNReply{
+	int32 status=1;
+}
+
